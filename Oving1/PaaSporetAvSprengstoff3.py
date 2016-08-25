@@ -1,9 +1,6 @@
 from sys import stdin
 import time
 start = time.clock()
-storst = float('-inf')
-for i in stdin:
-    if int(i) > float(storst):
-        storst = int(i)
+data = [int(i) for i in stdin.readlines()]
 end = time.clock()
-print(storst, "time(s): " + str(end-start))
+print(max(data),"time(s): "+str(end-start))
