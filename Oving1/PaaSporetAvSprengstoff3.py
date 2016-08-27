@@ -1,2 +1,6 @@
 from sys import stdin
-print(max(int(i) for i in stdin.readlines()))
+from time import clock
+start = clock()
+var =max(int(i) for i in stdin.readlines())
+end = clock()
+print(var, "time(): "+str(end-start))

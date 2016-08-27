@@ -1,7 +1,7 @@
 from sys import stdin
-import time
+from time import clock
 
-start = time.clock()
+start = clock()
 forste = None
 siste = None
 
@@ -28,5 +28,5 @@ for linje in stdin:
     else:
         forrige_siste.neste = siste
 
-end = time.clock()
+end = clock()
 print(spor(forste), "time(s): " + str(end - start))
