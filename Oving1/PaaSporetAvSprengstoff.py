@@ -1,7 +1,6 @@
 from sys import stdin
-from time import clock
 
-start = clock()
+
 forste = None
 siste = None
 
@@ -13,12 +12,14 @@ class Kubbe:
 
 
 def spor(kubbe):
-    storst = kubbe.vekt
-    while kubbe.neste is not None:
-        if kubbe.neste.vekt > storst:
-            storst = kubbe.neste.vekt
-        kubbe = kubbe.neste
-    return storst
+    if kubbe != None:
+        storst = kubbe.vekt
+        while kubbe.neste is not None:
+            if kubbe.neste.vekt > storst:
+                storst = kubbe.neste.vekt
+            kubbe = kubbe.neste
+        return storst
+    return None
 
 
 for linje in stdin:
@@ -29,6 +30,6 @@ for linje in stdin:
     else:
         forrige_siste.neste = siste
 
-end = clock()
-print(spor(forste), "time(s): " + str(end - start))
+
+print(spor(forste))
 
