@@ -11,3 +11,8 @@
 11) git branch -d <branchName> --to delete local branch
 12) git push origin --delete <branchName> --to delete remote branch
 13) git merge <branchName> --Merges the branch you are currently on with the <branchName> branch
+
+Alias[]:
+	(git) status = st
+	(git) checkout = che
+	(git) commit = com
