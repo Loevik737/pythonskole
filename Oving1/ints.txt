@@ -1,5 +1,3 @@
-How many ints do you want to generate?
-The ints will be in the range 0- :
 0
 1
 1
