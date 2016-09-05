@@ -3,4 +3,4 @@ CPU1(i5 4670k, 3.8Ghz):      0,823   0,785   0,786   0,789   0,789
 CPU2(Pentinu B960, 2.2 Ghz): 1,606   1,617   1,613   1,623   1,602
 
 Results are the average of 4 algorithms running time in seconds.
-The algorithms find the lardgest number out of 10^6 random integers in different ways.
+The algorithm(s) find the lardgest number out of 10^6 random integers in different ways.

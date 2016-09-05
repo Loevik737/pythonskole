@@ -1,10 +1,6 @@
 from sys import stdin
 
 
-forste = None
-siste = None
-
-
 class Kubbe:
     def __init__(self, vekt):
         self.vekt = vekt
@@ -12,7 +8,7 @@ class Kubbe:
 
 
 def spor(kubbe):
-    if kubbe != None:
+    if kubbe is not None:
         storst = kubbe.vekt
         while kubbe.neste is not None:
             if kubbe.neste.vekt > storst:
@@ -21,15 +17,20 @@ def spor(kubbe):
         return storst
     return None
 
+def main():
+    forste = None
+    siste = None
 
-for linje in stdin:
-    forrige_siste = siste
-    siste = Kubbe(int(linje))
-    if forste is None:
-        forste = siste
-    else:
-        forrige_siste.neste = siste
+    for linje in stdin:
+        forrige_siste = siste
+        siste = Kubbe(int(linje))
+        if forste is None:
+            forste = siste
+        else:
+            forrige_siste.neste = siste
 
+    print(spor(forste))
 
-print(spor(forste))
+if __name__ == "__main__":
+    main()
 
