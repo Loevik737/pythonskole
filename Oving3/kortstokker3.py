@@ -1,5 +1,6 @@
 from sys import stdin
-from itertools import repeat
+from itertools import repeat, chain
+
 
 def merge(decks):
     if len(decks) > 1:
@@ -18,7 +19,7 @@ def merge(decks):
             else:
                 decks[k] = R[j]
                 j += 1
-            k +=1
+            k += 1
 
         while i < len(L):
             decks[k] = L[i]
@@ -30,16 +31,13 @@ def merge(decks):
             j += 1
             k += 1
 
+
 def main():
-    alist = []
     decks = []
     for line in stdin:
         (index, csv) = line.strip().split(':')
         decks.append(list(zip(map(int, csv.split(',')), repeat(index))))
-    for i in decks:
-        for j in i:
-            alist.append(j)
-        decks = alist
+    decks = list(chain.from_iterable(decks))
     merge(decks)
     print(''.join(v for (k, v) in decks))
 
