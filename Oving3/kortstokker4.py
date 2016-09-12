@@ -2,6 +2,8 @@ from sys import stdin
 from itertools import repeat, chain
 from time import clock
 a = clock()
+
+
 def merge(x):
     result = []
     if len(x) < 2:
