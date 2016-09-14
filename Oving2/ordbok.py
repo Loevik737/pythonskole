@@ -7,27 +7,33 @@ class Node:
         self.barn = {}
         self.posi = []
 
-
+#
 def bygg(ordliste):
-    tre = []
-    for i in ordliste:
-        for j in range(0,len(i[0])-1):
-            node = Node()
-            node2 = Node()
-            node2.barn[i[0][j+1]] = {}
-            node.barn[i[0][j]] = node2
+    toppnode = Node()
+    for (ord, posisjon) in ordliste:
+        node = toppnode
+        for bokstav in ord:
+            if bokstav not in node.barn.keys():
+                node.barn[bokstav] = Node()
+            node = node.barn[bokstav]
+        node.posi.append(posisjon)
+    return toppnode
 
-            if len(i[0][j+1]) == len(i)-1:
-                node.posi.append(i[1])
-            tre.append(node)
-
-
-    for i in tre:
-        print(i.barn,i.posi)
 
 
 def posisjoner(ord, indeks, node):
-    print("fd")
+    if indeks >= len(ord):
+        posi = node.posi
+    elif ord[indeks] == "?":
+        posi = []
+        for barn in node.barn.values():
+            posi += posisjoner(ord,indeks+1,barn)
+    elif ord[indeks] in node.barn.keys():
+        posi = posisjoner(ord,indeks+1,node.barn[ord[indeks]])
+    else:
+        posi = []
+    return posi
+
 
 
 def main():
@@ -38,7 +44,6 @@ def main():
         for o in ord:
             ordliste.append((o, pos))
             pos += len(o) + 1
-        print(ordliste)
         toppnode = bygg(ordliste)
         for sokeord in stdin:
             sokeord = sokeord.strip()
