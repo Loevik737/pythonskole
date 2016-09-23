@@ -34,7 +34,7 @@ def findClosest(A,x,arg):
         return A[len(A)-1]
     if arg =="low":
         for j in range(1,len(A)-1):
-            if x> A[j-1]:
+            if x> A[j]:
                 return A[j]
         return A[0]
 
