@@ -26,6 +26,7 @@ def find(A, lower, upper):
 
 
 def findClosest(A,x,arg):
+    #finding interval
     if arg =="up":
         for i in range(0,len(A)-1):
             if x < A[i]:
