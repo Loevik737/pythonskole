@@ -3,26 +3,38 @@
 from sys import stdin
 from string import ascii_lowercase as chars
 
+def sort(A):
+    for j in range(1, len(A)):
+        key = A[j]
+        i = j - 1
+        while i > -1 and A[i] > key:
+            A[i + 1] = A[i]
+            i -= 1
+        A[i + 1] = key
+    return A
 
-def flexradix(A, i):
+
+def flexradix(A):
+    i = 0
     if len(A) <= 1:
         return A
-    ferdig = []
     botter = [[] for x in range(len(chars))]
     for word in A:
-        if i >= len(word):
-            ferdig.append(word)
-        else:
-            botter[ord(word[i]) - ord('a')].append(word)
-    botter = [flexradix(b, i + 1) for b in botter]
-    return ferdig + [b for blist in botter for b in blist]
+        botter[ord(word[i]) - ord('a')].append(word)
+    A = []
+    for i in botter:
+        if i != []:
+            A.append(sort(i))
+    return A
+
 
 
 d = int(stdin.readline())
 strings = []
 for line in stdin:
     strings.append(line.rstrip())
-A = flexradix(strings, 0)
+A = flexradix(strings)
 for string in A:
-    print(string)
+    for a in string:
+        print(a)
 
