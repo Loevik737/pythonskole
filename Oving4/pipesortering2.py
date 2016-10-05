@@ -2,7 +2,7 @@
 
 from sys import stdin
 
-
+#this version is not 100% tested
 def sort_list(x):
     result = []
     if len(x) < 2:
@@ -30,7 +30,8 @@ def find(A, lower):
         find(A[:mid])
     elif lower == A[mid]:
         return A[mid]
-    elif: lower == A[mid+1]
+    elif lower == A[mid+1]:
+        return A[mid+1]
     else:
         find(A[mid:])
 
