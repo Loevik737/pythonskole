@@ -2,16 +2,24 @@
 
 from sys import stdin
 
-
-def sort_list(A):
-    for j in range(1, len(A)):
-        key = A[j]
-        i = j - 1
-        while i > -1 and A[i] > key:
-            A[i + 1] = A[i]
-            i -= 1
-        A[i + 1] = key
-    return A
+def sort_list(x):
+    result = []
+    if len(x) < 2:
+        return x
+    mid = len(x) // 2
+    y = sort_list(x[:mid])
+    z = sort_list(x[mid:])
+    i, j = 0, 0
+    while i < len(y) and j < len(z):
+        if y[i] > z[j]:
+            result.append(z[j])
+            j += 1
+        else:
+            result.append(y[i])
+            i += 1
+    result += y[i:]
+    result += z[j:]
+    return result
 
 
 def find(A, lower, upper):
@@ -49,3 +57,4 @@ for line in stdin:
     maximum = int(word[1])
     result = find(sorted_list, minimum, maximum)
     print(str(result[0]) + " " + str(result[1]))
+

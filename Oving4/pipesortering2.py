@@ -23,29 +23,17 @@ def sort_list(x):
     return result
 
 
-def find(A, lower, upper):
-    if lower in A and upper in A:
-        return [lower,upper]
-    if lower in A and upper not in A:
-        return [lower,findClosest(A,upper,"up")]
-    if upper in A and lower not in A:
-        return [findClosest(A,lower,"low"),upper]
-    if upper not in A and lower not in A:
-        return [findClosest(A,lower,"low"),findClosest(A,upper,"up")]
+def find(A, lower):
+    mid = len(A)//2
 
+    if lower in A[:mid]:
+        find(A[:mid])
+    elif lower == A[mid]:
+        return A[mid]
+    elif: lower == A[mid+1]
+    else:
+        find(A[mid:])
 
-def findClosest(A,x,arg):
-    #finding interval
-    if arg =="up":
-        for i in range(0,len(A)-1):
-            if x < A[i]:
-                return A[i]
-        return A[len(A)-1]
-    if arg =="low":
-        for j in range(1,len(A)-1):
-            if x> A[j]:
-                return A[j]
-        return A[0]
 
 
 input_list = []
@@ -56,5 +44,5 @@ for line in stdin:
     word = line.split()
     minimum = int(word[0])
     maximum = int(word[1])
-    result = find(sorted_list, minimum, maximum)
+    result = find(sorted_list, minimum)
     print(str(result[0]) + " " + str(result[1]))
