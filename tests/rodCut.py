@@ -14,5 +14,5 @@ def cut_rod(p, n):
     return r[n]
 
 
-print(cut_rod(A,7))
+print(cut_rod(A,3))
 

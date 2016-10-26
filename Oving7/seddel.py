@@ -5,12 +5,12 @@ from sys import stdin
 
 def max_value(widths, heights, values, paper_width, paper_height):
 
-    # Create array; width major
+
     result = [None] * (paper_width + 1)
     for w in range(paper_width + 1):
         result[w] = [-1] * (paper_height + 1)
 
-    # Find the minimal width or height
+
     minSize = float("inf")
     for w in widths:
         if w < minSize:
@@ -19,21 +19,21 @@ def max_value(widths, heights, values, paper_width, paper_height):
         if h < minSize:
             minSize = h
 
-    # Zero out all entries with too small width or height
+
     for a in range(minSize):
         for w in range(paper_width):
             result[w][a] = 0
         for h in range(paper_height):
             result[a][h] = 0
 
-    # Set the values we know (better values may be found, though)
+
     for x in range(len(values)):
         if widths[x] <= paper_width and heights[x] <= paper_height and result[widths[x]][heights[x]] < values[x]:
             result[widths[x]][heights[x]] = values[x]
         if heights[x] <= paper_width and widths[x] <= paper_height and result[heights[x]][widths[x]] < values[x]:
             result[heights[x]][widths[x]] = values[x]
 
-    # Calculate the other entries
+
     for w in range(paper_width + 1):
         for h in range(paper_height + 1):
             if result[w][h] == 0:
